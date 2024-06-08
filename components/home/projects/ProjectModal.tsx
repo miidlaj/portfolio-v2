@@ -38,7 +38,7 @@ export const ProjectModal = ({
   }, [isOpen]);
 
   const content = (
-    <div className={styles.modal} onClick={() => setIsOpen(false)}>
+    <div className={styles.modal} onClick={() => setIsOpen(false)} id="scrollbar">
       <button className={styles.closeModalBtn}>
         <MdClose />
       </button>

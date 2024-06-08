@@ -1,163 +1,298 @@
 import { SectionHeader } from "@/components/utils/SectionHeader";
 import { Project } from "./Project";
 import styles from "./projects.module.scss";
+import { StandardButton } from "@/components/buttons/StandardButton";
+import React from "react";
 
 export const Projects = () => {
+  const [loadMore, setLoadMore] = React.useState(false);
+
   return (
     <section className="section-wrapper" id="projects">
       <SectionHeader title="Projects" dir="r" />
 
       <div className={styles.projects}>
-        {projects.map((project) => {
+        {projects.slice(0, 6).map((project) => {
           return <Project key={project.title} {...project} />;
         })}
       </div>
+
+      {loadMore && (
+        <div className={styles.projects}>
+          {projects.slice(6, projects.length).map((project) => {
+            return <Project key={project.title} {...project} />;
+          })}
+        </div>
+      )}
+
+      {loadMore ? (
+        <div className={styles.showmore}>
+          <StandardButton
+            onClick={() => {
+              setLoadMore(false);
+              document.getElementById("projects")?.scrollIntoView();
+            }}
+          >
+            Collapse
+          </StandardButton>
+        </div>
+      ) : (
+        <div className={styles.showmore}>
+          <StandardButton
+            onClick={() => {
+              setLoadMore(true);
+            }}
+          >
+            Load More
+          </StandardButton>
+        </div>
+      )}
     </section>
   );
 };
 
 const projects = [
   {
-    title: "Classified",
-    imgSrc: "/project-imgs/agency-listing.png",
+    title: "Ecommerce Application",
+    imgSrc: "/project-imgs/ecommerce-app.png",
+    code: "https://github.com/miidlaj/commercefox",
+    projectLink: "#",
+    tech: ["Spring Boot", "Thymeleaf", "MySQL", "Bootstrap", "jQuery"],
+    description:
+      "Developed and deployed an e-commerce application from scratch.",
+    modalContent: (
+      <>
+        <p>
+          Developed and deployed an e-commerce application from scratch using
+          Spring Boot, Thymeleaf, MySQL, Bootstrap, and jQuery.
+        </p>
+        <p>
+          The system incorporates an Admin panel with five roles (admin,
+          assistant, shipper, editor, salesperson) for comprehensive management
+          of products, cash-on-delivery, shipping, inventory, order processing,
+          and customer information.
+        </p>
+        <p>
+          A PayPal payment gateway facilitates secure transactions, while images
+          are stored in an S3 Bucket for cloud support. OAuth2 Authorization is
+          implemented for social logins with Google and Facebook, enhancing user
+          authentication.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "Microservice Project",
+    imgSrc: "/project-imgs/microservice-project.png",
     code: "#",
     projectLink: "#",
-    tech: ["React", "Nextjs", "Tailwind", "Prisma"],
-    description: "An Insurance Agency Listing Web Application.",
-    modalContent: (
-      <>
-        <p>
-          Worked as a front-end developer and created dynamic reusable
-          components and base layout from a mock-up.
-        </p>
-        <p>
-          The tech stack is based on Nextjs with the custom tailwind components,
-          connected to a Prisma backend.
-        </p>
-      </>
-    ),
-  },
-  {
-    title: "Elancerz",
-    imgSrc: "/project-imgs/elancerz.png",
-    code: "https://www.github.com",
-    projectLink: "https://elancerz.com/",
-    tech: ["React", "Nextjs", "Sytled Components", "Firebase Auth", "Laravel"],
+    tech: ["React", "Spring Boot", "Kafka", "Razorpay"],
     description:
-      "A Talent finder app for anything around the world. This is my first time as a React developer job.",
+      "Developed a comprehensive Resort Management and Booking system.",
     modalContent: (
       <>
         <p>
-          Worked as a front-end developer and created dynamic reusable
-          components, integrated calendly, messaging and project management
-          features.
+          Developed a comprehensive Resort Management and Booking system using
+          React for the frontend and Spring Boot for the backend.
         </p>
         <p>
-          The tech stack is based on Nextjs with the custom Styled components,
-          connected to a Laravel backend, with data stored in Mysql.
+          The system utilizes a Microservices architecture, employing different
+          databases for various microservices. Asynchronous email services are
+          managed through Kafka, and a Razorpay payment gateway is integrated.
+        </p>
+        <p>
+          OAuth2 Authorization facilitates social logins with Google, Facebook,
+          and GitHub. The frontend is organized with a multi-module approach,
+          catering to admin and user functionalities.
         </p>
       </>
     ),
   },
   {
-    title: "Agency Iron Admin",
-    imgSrc: "/project-imgs/agency-iron-crm.png",
-    code: "https://www.github.com",
-    // projectLink: "https://agency-iron-crm.herokuapp.com/",
+    title: "Library API",
+    imgSrc: "/project-imgs/library-api.png",
+    code: "https://github.com/miidlaj/library-api",
     projectLink: "#",
-    tech: ["React", "MUI", "MongoDB", "Postgres", "Python"],
+    tech: ["Spring Boot"],
     description:
-      "A Dashboard for clients and admin of Rocky Mountain West Insurance LLC. using Vuejs and re-worked using Reactjs.",
+      "Spring Boot application providing RESTful endpoints to manage a book library.",
     modalContent: (
       <>
         <p>
-          Worked as a front-end developer for this web application. Integrated
-          api&apos;s, Created dynamic and reusable components.
+          Spring Boot application that provides RESTful endpoints to manage a
+          book library.
         </p>
         <p>
-          I work primarily on the frontend, creating reusable components and
-          integrating api.
-        </p>
-        <p>
-          The team in total consists of 3 developers. This is a passion project
-          for all of us.
+          The application supports CRUD operations for books, authors, and book
+          rentals.
         </p>
       </>
     ),
   },
   {
-    title: "WorshipHIM",
-    imgSrc: "/project-imgs/wh_app.png",
-    code: "https://www.github.com",
-    projectLink:
-      "https://play.google.com/store/apps/details?id=com.ellinx.lightapps.worshiphim&hl=en&gl=US",
-    tech: ["React", "React Native", "Styled Components", "Android"],
-    description:
-      "WorshipHIM is a chord and lyrics app developed to help ease everyone in their worship to God.",
-    modalContent: (
-      <>
-        <p>
-          WorshipHIM is a chord and lyrics app developed to help ease everyone
-          in their worship to God. So that all may know, from the rising of the
-          sun to its setting, That there is none besides God. He is the Lord and
-          there&apos;s no other! Praise Him, Worship Him!
-        </p>
-        <p>This is a very fun project that i made using React Native.</p>
-      </>
-    ),
-  },
-  {
-    title: "WorshipHIM Landing Page",
-    imgSrc: "/project-imgs/worshiphim.png",
-    code: "https://www.github.com",
-    projectLink: "https://worshiphim.vercel.app/",
-    tech: ["React", "Nextjs", "Tailwind", "Google Play Scrapper", "Ko-Fi"],
-    description:
-      "Landing Page of WorshipHIM mobile application for showcasing feature rich and tools of the app.",
-    modalContent: (
-      <>
-        <p>
-          This is another self project that i made to showcase our mobile app.
-        </p>
-        <p>
-          I integrated ko-fi donation and uses Template for this Nextjs Project.
-          I also use a plugin for scrapping data from our google play to display
-          directly on the landing page.
-        </p>
-      </>
-    ),
-  },
-  {
-    title: "Portfolio v.2",
-    imgSrc: "/project-imgs/portfolio-01.png",
-    code: "https://github.com/jcdevz-dev/portfolio",
+    title: "Accounting Application",
+    imgSrc: "/project-imgs/accounting-app.png",
+    code: "https://github.com/miidlaj/jamshad-billing",
     projectLink: "#",
-    tech: ["React", "Styled Components", "Typescript", "Gatsby"],
-    description: "First Portfolio Made with React JS",
+    tech: ["React", "Spring Boot"],
+    description: "Contributed to a comprehensive Accounting web application.",
     modalContent: (
       <>
         <p>
-          This is my second version of my portfolio that i made to showcase my
-          projects.
+          Contributed to a comprehensive Accounting web application, focusing on
+          the front-end side.
         </p>
-        <p>Trying out gatsby and creating my second version of portfolio</p>
       </>
     ),
   },
   {
-    title: "Portfolio v.1",
-    imgSrc: "/project-imgs/portfolio-00.png",
-    code: "https://github.com/jcdevz-dev/jc-portfolio",
-    projectLink: "https://jc-devera.vercel.app/",
-    tech: ["React", "Styled Components", "Typescript"],
-    description: "First Portfolio Made with React JS",
+    title: "OLX Clone",
+    imgSrc: "/project-imgs/olx-clone.png",
+    code: "#",
+    projectLink: "https://olx-clone-6m2d.onrender.com",
+    tech: ["React", "Firebase"],
+    description: "Developed an OLX clone using React and Firebase.",
+    modalContent: (
+      <>
+        <p>Developed an OLX clone using ReactJS and Firebase.</p>
+      </>
+    ),
+  },
+  {
+    title: "CMS Website",
+    imgSrc: "/project-imgs/cms-website.png",
+    code: "#",
+    projectLink: "#",
+    tech: ["Nest JS", "React", "MongoDB", "NodeJS"],
+    description:
+      "Created a CMS Website using Nest JS, React JS, MongoDB, and Node JS.",
     modalContent: (
       <>
         <p>
-          This is my first version of my portfolio that i made to showcase my
-          projects.
+          Created a CMS Website using Nest JS, React JS, MongoDB, and Node JS.
         </p>
-        <p>First step for learning React JS and creating my portfolio</p>
+      </>
+    ),
+  },
+  {
+    title: "To-Do Application",
+    imgSrc: "/project-imgs/todo-app.png",
+    code: "#",
+    projectLink: "#",
+    tech: ["ExpressJS", "NodeJS", "React", "MongoDB"],
+    description:
+      "Developed a To-Do Application using ExpressJS, NodeJS, ReactJS, and MongoDB.",
+    modalContent: (
+      <>
+        <p>
+          Developed a To-Do Application using ExpressJS, NodeJS, ReactJS, and
+          MongoDB.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "Creatures Academy",
+    imgSrc: "/project-imgs/creatures-academy.png",
+    code: "#",
+    projectLink: "https://creatures-academy.vercel.app",
+    tech: ["React"],
+    description: "Worked on Creatures Academy using React.",
+    modalContent: (
+      <>
+        <p>Worked on Creatures Academy using React.</p>
+      </>
+    ),
+  },
+  {
+    title: "X Protect",
+    imgSrc: "/project-imgs/xprotect.png",
+    code: "#",
+    projectLink: "https://xprotect.vercel.app",
+    tech: ["NextJS", "Server Action"],
+    description: "Developed X Protect using NextJS and Server Action.",
+    modalContent: (
+      <>
+        <p>Developed X Protect using NextJS and Server Action.</p>
+      </>
+    ),
+  },
+  {
+    title: "Newtok Tech",
+    imgSrc: "/project-imgs/newtok-tech.png",
+    code: "#",
+    projectLink: "https://www.newtoktech.com",
+    tech: ["NextJS", "RestAPI"],
+    description: "Developed Newtok Tech using NextJS and RestAPI.",
+    modalContent: (
+      <>
+        <p>Developed Newtok Tech using NextJS and RestAPI.</p>
+      </>
+    ),
+  },
+  {
+    title: "Mavani Solution",
+    imgSrc: "/project-imgs/mavani-solution.png",
+    code: "#",
+    projectLink: "https://mavanisolution.com",
+    tech: ["NextJS", "RestAPI"],
+    description: "Developed Mavani Solution using NextJS and RestAPI.",
+    modalContent: (
+      <>
+        <p>Developed Mavani Solution using NextJS and RestAPI.</p>
+      </>
+    ),
+  },
+  {
+    title: "Tradewave",
+    imgSrc: "/project-imgs/tradewave.png",
+    code: "#",
+    projectLink: "https://tradewave-vendor-ui.vercel.app",
+    tech: ["NextJS", "Zustand", "EdgeStore"],
+    description: "Worked on Tradewave using NextJS, Zustand, and EdgeStore.",
+    modalContent: (
+      <>
+        <p>Worked on Tradewave using NextJS, Zustand, and EdgeStore.</p>
+      </>
+    ),
+  },
+  {
+    title: "Unique Stitches",
+    imgSrc: "/project-imgs/unique-stitches.png",
+    code: "#",
+    projectLink: "https://unique-stiches.vercel.app",
+    tech: ["NextJS"],
+    description: "Developed Unique Stitches using NextJS.",
+    modalContent: (
+      <>
+        <p>Developed Unique Stitches using NextJS.</p>
+      </>
+    ),
+  },
+  {
+    title: "ACE Assured",
+    imgSrc: "/project-imgs/ace-assured.png",
+    code: "#",
+    projectLink: "https://aaccee.vercel.app",
+    tech: ["NextJS"],
+    description: "Developed ACE Assured using NextJS.",
+    modalContent: (
+      <>
+        <p>Developed ACE Assured using NextJS.</p>
+      </>
+    ),
+  },
+
+  {
+    title: "MyBrandFirst",
+    imgSrc: "/project-imgs/mybrandfirst.png",
+    code: "#",
+    projectLink: "https://www.mybrandfirst.com",
+    tech: ["NextJS", "RestAPI"],
+    description: "Developed MyBrandFirst using NextJS and RestAPI.",
+    modalContent: (
+      <>
+        <p>Developed MyBrandFirst using NextJS and RestAPI.</p>
       </>
     ),
   },

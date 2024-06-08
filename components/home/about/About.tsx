@@ -13,28 +13,36 @@ export const About = () => {
         <div>
           <Reveal>
             <p className={`${styles.aboutText} ${styles.highlightFirstLetter}`}>
-              Howdy! I&apos;m John Carlo Devera, and I&apos;m a Bachelor of Science in Information Technology graduate.
-              <br/><br/>
-              I have experience working in both the mobile and web development worlds, with a focus on frontend development. I&apos;m passionate about creating beautiful, responsive websites that provide a great user experience.
-             </p>
-          </Reveal>
-          <Reveal>
-            <p className={styles.aboutText}>
-              My skills include HTML, CSS, JavaScript, and various frontend frameworks like React and Vue.js. 
-              I&apos;ve also worked with backend technologies like Node.js, Firebase, MongoDB and PHP/Laravel , allowing me to build full-stack applications.
+              Howdy! I&apos;m Muhammed Midlaj, and I&apos;m a Java Full Stack
+              Developer.
+              <br />
+              <br />I have experience working in both frontend and backend
+              application. I&apos;m passionate about developing and mainitaining
+              scalable web applications provide a great user experience.
             </p>
           </Reveal>
           <Reveal>
             <p className={styles.aboutText}>
-              When I&apos;m not coding, I enjoy digital painting. 
-              I believe that maintaining a healthy work-life balance is crucial for staying productive and motivated.
+              My skills include Java, Spring Boot, JavaScript, TypeScript, and
+              various JavaScript frameworks like React.js, Next.js, Express.js
+              etc. I&apos;ve also worked with multiple databases like MySQL,
+              PostgreSQL, Redis, MongoDB allowing me to build applications more
+              flexible.
             </p>
           </Reveal>
           <Reveal>
             <p className={styles.aboutText}>
-              I&apos;m always looking for new challenges and opportunities to learn and grow as a developer. 
-              If you&apos;re interested in working together or have any questions, please don&apos;t hesitate to get in touch!
-              🔗
+              Other than the professional experience I have been in this field
+              for a while since this is my passion. I have worked alot of
+              project as a freelancer.
+            </p>
+          </Reveal>
+          <Reveal>
+            <p className={styles.aboutText}>
+              I&apos;m always looking for new challenges and opportunities to
+              learn and grow as a developer. If you&apos;re interested in
+              working together or have any questions, please don&apos;t hesitate
+              to get in touch! 🔗
             </p>
           </Reveal>
           <Reveal>
