@@ -12,31 +12,54 @@
       rel="stylesheet"
     />
     <style>
+      :root {
+        --page-width: 297mm;
+        --page-height: 210mm;
+        --scale-factor: 0.584; /* 1122px / 1920px */
+      }
+
       @page {
         size: A4 landscape;
         margin: 0;
       }
 
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
         padding: 0;
+        font-family: "Inter", "Space Grotesk", sans-serif;
+        background: #e5e7eb;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       .page-wrapper {
-        width: 1122px; /* A4 Landscape width in px (96 DPI) */
-        height: 794px; /* A4 Landscape height in px */
-        /* overflow: hidden; */
-        page-break-after: always;
+        width: var(--page-width);
+        height: var(--page-height);
         position: relative;
+        page-break-after: always;
+        overflow: hidden;
+        background: #f1f1f1;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      .page-wrapper:last-of-type {
+        page-break-after: auto;
       }
 
       .page-content {
         width: 1920px;
         height: 1080px;
-
-        /* Scale original Figma page down to fit A4 */
-        transform: scale(0.6);
         transform-origin: top left;
+        transform: scale(var(--scale-factor));
       }
     </style>
   </head>
@@ -716,7 +739,11 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
+    <div class="page-wrapper">
+      <div class="page-content">
         <!-- Page 2 -->
         <div
           style="
@@ -1087,7 +1114,11 @@
             </table>
           </div>
         </div>
+      </div>
+    </div>
 
+    <div class="page-wrapper">
+      <div class="page-content">
         <!-- Page 3 -->
         <div
           style="
@@ -1419,7 +1450,11 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
+    <div class="page-wrapper">
+      <div class="page-content">
         <!-- Page 4 -->
         <div
           style="
@@ -1875,7 +1910,11 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
+    <div class="page-wrapper">
+      <div class="page-content">
         <!-- Page 5 -->
         <div
           style="
@@ -2084,7 +2123,11 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
+    <div class="page-wrapper">
+      <div class="page-content">
         <!-- Page 6 -->
         <div
           style="
@@ -2861,7 +2904,11 @@
             </table>
           </div>
         </div>
+      </div>
+    </div>
 
+    <div class="page-wrapper">
+      <div class="page-content">
         <!-- Page 7 -->
         <div
           style="
@@ -3942,7 +3989,11 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
+    <div class="page-wrapper">
+      <div class="page-content">
         <!-- Page 8 -->
         <div
           style="
